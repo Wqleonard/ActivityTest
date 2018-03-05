@@ -12,6 +12,12 @@ import android.widget.Toast;
 
 public class FirstActivity extends AppCompatActivity {
     @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("FirstActivity","onRestart");
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main,menu);
         return true;
@@ -33,6 +39,8 @@ public class FirstActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        Log.d("FirstActivity",this.toString());
+        Log.d("FirstActivity","Task id is"+getTaskId());
         setContentView(R.layout.first_layout);
         Button button1=findViewById(R.id.button_1);
         button1.setOnClickListener(new View.OnClickListener() {
@@ -41,8 +49,8 @@ public class FirstActivity extends AppCompatActivity {
 //                Toast.makeText(FirstActivity.this,"You clicked Button 1",
 //                Toast.LENGTH_SHORT).show();
 //                finish();
-                String data="Hello SecondActivity";
-                Intent intent=new Intent(FirstActivity.this,SecondActivity.class);
+//                String data="Hello SecondActivity";
+//                Intent intent=new Intent(FirstActivity.this,SecondActivity.class);
 //                intent.putExtra("extra_data",data);
 //                Intent intent=new Intent("com.wangqian.activitytest.ACTION_START");
 //                intent.addCategory("com.wangqian.activitytest.MY_CATEGORY");
@@ -51,7 +59,9 @@ public class FirstActivity extends AppCompatActivity {
 //                Intent intent=new Intent(Intent.ACTION_DIAL);
 //                intent.setData(Uri.parse("tel:10086"));
 //                startActivity(intent);
-                startActivityForResult(intent,1);
+//                startActivityForResult(intent,1);
+                Intent intent=new Intent(FirstActivity.this,SecondActivity.class);
+                startActivity(intent);
             }
         });
 
